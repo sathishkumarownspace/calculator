@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101413">
+  <title>Calc — Scientific Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/14.8.1/math.min.js" integrity="sha512-ix7qh7Gu4nTiTEktF0EWQAsn0cGwuiDJwuxdX4GGpivcx+PxYdJ/j0nlWyUTONg2bOQV98vk+x+Ee6zYpB5wyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">ƒ</span><span>calc</span></div>
+      <div class="top-meta"><span class="live-dot" aria-hidden="true"></span><span>Scientific / 01</span></div>
+    </header>
+
+    <section class="workspace" aria-label="Scientific calculator">
+      <section class="calculator" aria-label="Calculator">
+        <div class="calc-head">
+          <p class="eyebrow">Precision instrument</p>
+          <div class="mode-switch" role="group" aria-label="Angle unit">
+            <button type="button" data-angle="DEG" aria-pressed="true">DEG</button>
+            <button type="button" data-angle="RAD" aria-pressed="false">RAD</button>
+          </div>
+        </div>
+        <div class="display" aria-live="polite" aria-atomic="true">
+          <div class="expression" id="expression">&nbsp;</div>
+          <div class="result placeholder" id="result">0</div>
+        </div>
+        <div class="key-grid" id="key-grid" aria-label="Calculator keys">
+          <button class="key function" data-insert="sin(" aria-label="Sine">sin<small>sin⁻¹</small></button>
+          <button class="key function" data-insert="cos(" aria-label="Cosine">cos<small>cos⁻¹</small></button>
+          <button class="key function" data-insert="tan(" aria-label="Tangent">tan<small>tan⁻¹</small></button>
+          <button class="key function" data-insert="log(" aria-label="Base 10 logarithm">log</button>
+          <button class="key function" data-insert="ln(" aria-label="Natural logarithm">ln</button>
+
+          <button class="key function" data-insert="asin(" aria-label="Inverse sine">sin⁻¹</button>
+          <button class="key function" data-insert="acos(" aria-label="Inverse cosine">cos⁻¹</button>
+          <button class="key function" data-insert="atan(" aria-label="Inverse tangent">tan⁻¹</button>
+          <button class="key function" data-insert="sqrt(" aria-label="Square root">√</button>
+          <button class="key function" data-insert="^2" aria-label="Square">x²</button>
+
+          <button class="key utility" data-insert="(" aria-label="Open parenthesis">(</button>
+          <button class="key utility" data-insert=")" aria-label="Close parenthesis">)</button>
+          <button class="key utility" data-insert="pi" aria-label="Pi">π</button>
+          <button class="key utility" data-insert="e" aria-label="Euler's number">e</button>
+          <button class="key utility" data-action="backspace" aria-label="Delete last character">⌫</button>
+
+          <button class="key utility danger" data-action="clear" aria-label="Clear">AC</button>
+          <button class="key function" data-insert="!" aria-label="Factorial">n!</button>
+          <button class="key function" data-insert="^" aria-label="Power">xʸ</button>
+          <button class="key operator" data-insert="/" aria-label="Divide">÷</button>
+          <button class="key operator" data-insert="*" aria-label="Multiply">×</button>
+
+          <button class="key" data-insert="7">7</button>
+          <button class="key" data-insert="8">8</button>
+          <button class="key" data-insert="9">9</button>
+          <button class="key function" data-insert="%" aria-label="Percent">%</button>
+          <button class="key operator" data-insert="-" aria-label="Subtract">−</button>
+
+          <button class="key" data-insert="4">4</button>
+          <button class="key" data-insert="5">5</button>
+          <button class="key" data-insert="6">6</button>
+          <button class="key utility" data-insert="Ans" aria-label="Previous answer">Ans</button>
+          <button class="key operator" data-insert="+" aria-label="Add">+</button>
+
+          <button class="key" data-insert="1">1</button>
+          <button class="key" data-insert="2">2</button>
+          <button class="key" data-insert="3">3</button>
+          <button class="key" data-insert="." aria-label="Decimal point">.</button>
+          <button class="key equals" data-action="equals" aria-label="Calculate">=</button>
+
+          <button class="key" data-insert="0">0</button>
+          <button class="key" data-insert="00">00</button>
+          <button class="key" data-action="sign" aria-label="Change sign">+/−</button>
+          <button class="key utility" data-insert="^0.5" aria-label="Square root exponent">√x</button>
+          <button class="key operator" data-insert="%" aria-label="Percent">%</button>
+        </div>
+      </section>
+
+      <aside class="history-panel" aria-label="Calculation history">
+        <div class="history-head">
+          <h2 class="history-title">Recent</h2>
+          <button class="clear-history" id="clear-history" type="button">Clear</button>
+        </div>
+        <div class="history-list" id="history-list"><p class="history-empty">Your calculations<br>will appear here.</p></div>
+        <div class="history-footer"><span class="key-hint">↵</span> calculate <span aria-hidden="true"> · </span> <span class="key-hint">esc</span> clear</div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
